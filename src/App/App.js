@@ -7,7 +7,7 @@ const LSKEY = 'MyTodoApp';
 
 function App() {
   // If there are todos in localstorage retrieve them or set inital todos to an empty array
-  const initialTodos = JSON.parse(localStorage.getItem(LSKEY + '.todos') || []);
+  const initialTodos = JSON.parse(localStorage.getItem(LSKEY + '.todos')) || [];
 
   const [todos, setTodos] = useState(initialTodos);
   const inputRef = useRef();
