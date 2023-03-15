@@ -46,3 +46,12 @@
     display: flex;
     gap: .5em;
 }
+
+.todo + .todo{
+    margin-top: .5em;
+}
+
+.delete-btn {
+    cursor: pointer;
+    margin-left: .5em;
+}

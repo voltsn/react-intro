@@ -1,4 +1,5 @@
 import './Todo.css';
+import trashIcon from '../../trash.svg';
 import { useState } from 'react';
 
 const Todo = () => {
@@ -21,6 +22,13 @@ const Todo = () => {
         todo.value = "";
     }
 
+    function deleteTodo(event) {
+        const id = event.target.parentNode.dataset.id;
+        const updatedTodos = todos.filter((todo) => todo.id !== id);
+
+        setTodo(updatedTodos);
+    }
+
     return <div className='container'>
             <form className='form'>
                 <input className='todo-input' id="todo"type="text" name="todo" placeholder='Type a new todo'/>
@@ -30,7 +38,11 @@ const Todo = () => {
                 <h2 className="sub_heading">Todos</h2>
                 <ul className='todolist'>
                     {todos.map(todo => (
-                        <li className='todo' key={todo.id} data-id={todo.id}> <input type='checkbox'/>{todo.task}</li>
+                        <li className='todo' key={todo.id} data-id={todo.id}>
+                            <input onClick={hanld} type='checkbox'/>
+                            {todo.task}
+                            <img className="delete-btn" onClick={deleteTodo} src={trashIcon} alt="trash icon"/>
+                        </li>
                     ))}
                 </ul>
             </div>
