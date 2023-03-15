@@ -1,5 +1,5 @@
-import Header from '../Header/Header';
-import Todo from '../Todo/Todo';
+import Header from './Header/Header';
+import Todo from './Todo/Todo';
 
 function App() {
 
