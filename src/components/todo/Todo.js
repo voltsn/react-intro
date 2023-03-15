@@ -3,7 +3,7 @@ import trashIcon from '../../trash.svg';
 import { useState } from 'react';
 
 const Todo = () => {
-    const initialTodos = [{'id':crypto.randomUUID(), 'task': 'Take out the trash'}, {'id':crypto.randomUUID(), 'task': 'Feed the cat'}, {'id':crypto.randomUUID(), 'task': 'Check emails'}]
+    const initialTodos = [{'id':crypto.randomUUID(), 'task': 'Take out the trash', 'completed':true}, {'id':crypto.randomUUID(), 'task': 'Feed the cat', 'completed':false}, {'id':crypto.randomUUID(), 'task': 'Check emails', 'completed':true}]
     const [todos, setTodo] = useState(initialTodos);
 
     function handleClick(event){
@@ -39,7 +39,7 @@ const Todo = () => {
                 <ul className='todolist'>
                     {todos.map(todo => (
                         <li className='todo' key={todo.id} data-id={todo.id}>
-                            <input onClick={hanld} type='checkbox'/>
+                            <input type='checkbox' checked={todo.completed}/>
                             {todo.task}
                             <img className="delete-btn" onClick={deleteTodo} src={trashIcon} alt="trash icon"/>
                         </li>
