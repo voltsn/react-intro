@@ -16,7 +16,7 @@ const Todo = () => {
         // Updete state
         setTodo([...todos, {'id':id, 'task':todo.value}]);
 
-        // EMpty field
+        // Empty field
         todo.value = "";
     }
 
