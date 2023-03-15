@@ -1,12 +1,15 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Header from './Header/Header';
 import Todo from './Todo/Todo';
 import Form from "./Form/Form";
 
-function App() {
-  const initialTodos = [{'id':crypto.randomUUID(), 'task': 'Take out the trash', 'completed':true}, {'id':crypto.randomUUID(), 'task': 'Feed the cat', 'completed':false}, {'id':crypto.randomUUID(), 'task': 'Check emails', 'completed':true}];
-  const [todos, setTodos] = useState(initialTodos);
+const LSKEY = 'MyTodoApp';
 
+function App() {
+  // If there are todos in localstorage retrieve them or set inital todos to an empty array
+  const initialTodos = JSON.parse(localStorage.getItem(LSKEY + '.todos') || []);
+
+  const [todos, setTodos] = useState(initialTodos);
   const inputRef = useRef();
 
   function handleSubmit() {
@@ -42,6 +45,11 @@ function App() {
     // Update state
     setTodos(todosCopy);
   }
+
+  // Store todos in localstorage
+  useEffect(() => {
+    window.localStorage.setItem(LSKEY + '.todos', JSON.stringify(todos));
+  }, [todos]);
 
   return (
     <>
