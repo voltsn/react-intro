@@ -1,6 +1,7 @@
 import './Todo.css';
 import trashIcon from '../../trash.svg';
 import { useState } from 'react';
+import Form from '../Form/Form';
 
 const Todo = () => {
     const initialTodos = [{'id':crypto.randomUUID(), 'task': 'Take out the trash', 'completed':true}, {'id':crypto.randomUUID(), 'task': 'Feed the cat', 'completed':false}, {'id':crypto.randomUUID(), 'task': 'Check emails', 'completed':true}]
@@ -30,16 +31,13 @@ const Todo = () => {
     }
 
     return <div className='container'>
-            <form className='form'>
-                <input className='todo-input' id="todo"type="text" name="todo" placeholder='Type a new todo'/>
-                <button className='btn btn--blue' onClick={handleClick}>Add Todo</button>
-            </form>
+            <Form />
             <div>
                 <h2 className="sub_heading">Todos</h2>
                 <ul className='todolist'>
                     {todos.map(todo => (
                         <li className='todo' key={todo.id} data-id={todo.id}>
-                            <input type='checkbox' checked={todo.completed}/>
+                            <input type='checkbox' defaultChecked={todo.completed}/>
                             {todo.task}
                             <img className="delete-btn" onClick={deleteTodo} src={trashIcon} alt="trash icon"/>
                         </li>
