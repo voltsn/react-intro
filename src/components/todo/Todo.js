@@ -2,7 +2,7 @@ import './Todo.css';
 import { useState } from 'react';
 
 const Todo = () => {
-    const [todos, setTodo] = useState([]);
+    const [todos, setTodo] = useState([{'id':0, 'task': 'Take out the trash'}, {'id':1, 'task': 'Feed the cat'}, {'id':2, 'task': 'Check emails'}]);
 
     function handleClick(event){
         event.preventDefault();
