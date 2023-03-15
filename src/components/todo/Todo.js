@@ -30,7 +30,7 @@ const Todo = () => {
                 <h2 className="sub_heading">Todos</h2>
                 <ul className='todolist'>
                     {todos.map(todo => (
-                        <li className='todo' key={todo.id}> <input type='checkbox'/>{todo.task}</li>
+                        <li className='todo' key={todo.id} data-id={todo.id}> <input type='checkbox'/>{todo.task}</li>
                     ))}
                 </ul>
             </div>
