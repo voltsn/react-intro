@@ -2,7 +2,7 @@ import './Todo.css';
 import { useState } from 'react';
 
 const Todo = () => {
-    const initialTodos = [{'id':0, 'task': 'Take out the trash'}, {'id':1, 'task': 'Feed the cat'}, {'id':2, 'task': 'Check emails'}]
+    const initialTodos = [{'id':crypto.randomUUID(), 'task': 'Take out the trash'}, {'id':crypto.randomUUID(), 'task': 'Feed the cat'}, {'id':crypto.randomUUID(), 'task': 'Check emails'}]
     const [todos, setTodo] = useState(initialTodos);
 
     function handleClick(event){
@@ -12,7 +12,7 @@ const Todo = () => {
         if(todo.value === "")return;
 
         // Generate id
-        const id = todos.length - 1;
+        const id = crypto.randomUUID();
 
         // Updete state
         setTodo([...todos, {'id':id, 'task':todo.value}]);
