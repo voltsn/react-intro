@@ -32,15 +32,12 @@ function App() {
 
     // Deep copy the todos array
     const todosCopy = JSON.parse(JSON.stringify(todos));
+    const todo = todosCopy.find((todo) =>  todo.id === id);
 
-    for (let i = 0; i < todosCopy.length; i++) {
-      if (todosCopy[i].id === id) {
+    // The specified todo was not found 
+    if (!todo)return;
 
-        // Update completion status
-        todosCopy[i].completed = todosCopy[i].completed ? false : true;
-        break;
-      }
-    }
+    todo.completed = todo.completed ? false : true;
 
     // Update state
     setTodos(todosCopy);
